@@ -1,7 +1,17 @@
-<html lang="en" ng-app="Pledge">
+<html lang="en" ng-app="App">
 
 <head>
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pledge to act!</title>
+  <style type="text/css">
+	  md-card {
+	  	 padding: 10px 20px 10px;
+	  }
+	  md-input-container {
+		  margin: 0;
+	  }
+  </style>
 </head>
 
 <body layout="row" ng-controller="AppCtrl">
@@ -13,25 +23,42 @@
     </md-toolbar>
     <md-content flex md-scroll-y>
       <div class="inset" hide-sm></div>
-      <div layout="row" layout-align="center center">
-        <md-card flex-gt-sm="90" flex-gt-md="80">
-          <md-card-content layout="column" style="padding:20px 40px 40px">
+      <div layout="row" layout-sm="column" layout-xs="column">
+        <md-card flex flex-sm="none" flex-xs="none">
+          <md-card-content layout="column">
             <h2>What would you like to do?</h2>
-            <md-checkbox>Teach a children's class?</md-checkbox>
-            <md-checkbox>Animate a junior youth group?</md-checkbox>
-            <md-checkbox>Accompany a group of people through the institute process?</md-checkbox>
-            <md-checkbox>Host a devotional gathering?</md-checkbox>
+            <md-checkbox ng-model="data.childrensClass">Teach a children's class?</md-checkbox>
+            <md-checkbox ng-model="data.juniorYouthGroup">Animate a junior youth group?</md-checkbox>
+            <md-checkbox ng-model="data.studyCircle">Accompany a group of people through the institute process?</md-checkbox>
+            <md-checkbox ng-model="data.devotionalGathering">Host a devotional gathering?</md-checkbox>
             <div layout="row" layout-align="left center">
-              <md-checkbox>Other:</md-checkbox>
-              <md-input-container style="margin: 0;">
-                <input type="text" ng-model="other">
+              <md-checkbox ng-model="data.other">Other:</md-checkbox>
+              <md-input-container>
+                <input type="text" ng-model="data.otherValue" aria-label="Other action">
               </md-input-container>
-            </div>
-            <div>
-              <md-button class="md-primary md-raised">Send</md-button>
             </div>
           </md-card-content>
         </md-card>
+		<md-card flex flex-sm="none" flex-xs="none">
+       	  <md-card-content layout="column">
+		  	<h2>Your contact information:</h2>
+			<md-input-container>
+			  <label>Name</label>
+			  <input type="text" ng-model="data.name" required>
+			</md-input-container>
+			<md-input-container>
+			  <label>Email</label>
+			  <input type="text" ng-model="data.email">
+			</md-input-container>
+			<md-input-container>
+			  <label>Phone</label>
+			  <input type="text" ng-model="data.phone">
+			</md-input-container>
+          </md-card-content>
+		</md-card>
+      </div>
+      <div layout="row" layout-align="center center">
+        <md-button class="md-primary md-raised" ng-click="send()">Send</md-button>
       </div>
     </md-content>
   </div>
@@ -40,8 +67,19 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.js"></script>
   <script type="text/javascript">
-    var app = angular.module("Pledge", ["ngMaterial"]);
-    app.controller("AppCtrl", ["$scope", function($scope) {}]);
+    var app = angular.module("App", ["ngMaterial"]);
+    app.controller("AppCtrl", ["$scope", function($scope) {
+		$scope.data = {};
+    	$scope.send = function() {
+    		console.log($scope.data);
+    	};
+    }]);
+	app.config(function($mdThemingProvider) {
+		var color = 'blue';
+		$mdThemingProvider.theme('default')
+		    .primaryPalette(color)
+		    .accentPalette(color);
+	});
   </script>
 </body>
 
