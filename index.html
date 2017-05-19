@@ -62,17 +62,37 @@
       </div>
     </md-content>
   </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.js"></script>
   <script type="text/javascript">
-    var app = angular.module("App", ["ngMaterial"]);
-    app.controller("AppCtrl", ["$scope", function($scope) {
+	var services = angular.module("services", []);
+    services.service("metaService", function() {
+    	this.setOpenGraphMetaTags = function(data) {
+			var head = $('head');
+    		for(var key in data) {
+				var value = data[key];
+    			head.append('<meta property="og:'+key+'" content="'+value+'" />');
+    		}
+    	};
+    });
+    var app = angular.module("App", ["ngMaterial", "services"]);
+    app.controller("AppCtrl", ["$scope", "metaService", function($scope, metaService) {
 		$scope.data = {};
     	$scope.send = function() {
     		console.log($scope.data);
     	};
+		metaService.setOpenGraphMetaTags({
+			title: "Pledge to act!",
+			type: "website",
+			url: "http://websites.doopr.com/pledge/",
+			image: "http://websites.doopr.com/pledge/pledge-icon.jpg",
+			description: "A website that let's you pledge to take an action in the framework for action of community building.",
+			locale: "en_US",
+			site_name: "Pledge Site"
+		});
     }]);
 	app.config(function($mdThemingProvider) {
 		var color = 'blue';
