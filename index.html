@@ -12,6 +12,13 @@
 		  margin: 0;
 	  }
   </style>
+  <meta property="og:title" content="Pledge to act!"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://websites.doopr.com/pledge/"/>
+  <meta property="og:image" content="http://websites.doopr.com/pledge/pledge-icon.jpg"/>
+  <meta property="og:description" content="A website that let's you pledge to take an action in the framework for action of community building."/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:site_name" content="Pledge Site"/>
 </head>
 
 <body layout="row" ng-controller="AppCtrl">
@@ -84,15 +91,15 @@
     	$scope.send = function() {
     		console.log($scope.data);
     	};
-		metaService.setOpenGraphMetaTags({
-			title: "Pledge to act!",
-			type: "website",
-			url: "http://websites.doopr.com/pledge/",
-			image: "http://websites.doopr.com/pledge/pledge-icon.jpg",
-			description: "A website that let's you pledge to take an action in the framework for action of community building.",
-			locale: "en_US",
-			site_name: "Pledge Site"
-		});
+		// metaService.setOpenGraphMetaTags({
+		// 	title: "Pledge to act!",
+		// 	type: "website",
+		// 	url: "http://websites.doopr.com/pledge/",
+		// 	image: "http://websites.doopr.com/pledge/pledge-icon.jpg",
+		// 	description: "A website that let's you pledge to take an action in the framework for action of community building.",
+		// 	locale: "en_US",
+		// 	site_name: "Pledge Site"
+		// });
     }]);
 	app.config(function($mdThemingProvider) {
 		var color = 'blue';
