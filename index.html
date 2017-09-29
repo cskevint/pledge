@@ -60,6 +60,13 @@
       <div layout="row" layout-align="center center">
         <md-button class="md-primary md-raised" ng-click="send()">Send</md-button>
       </div>
+      <div>
+         <md-card>
+          <md-card-content>
+            {{ firebase }}
+          </md-card-content>
+         </md-card>
+      </div>
     </md-content>
   </div>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -67,32 +74,60 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.4/angular-material.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAUuXkr3BnF6V1zP87Rq1a22SdGNW41b_4",
+    authDomain: "blazing-torch-2612.firebaseapp.com",
+    databaseURL: "https://blazing-torch-2612.firebaseio.com",
+    projectId: "blazing-torch-2612",
+    storageBucket: "blazing-torch-2612.appspot.com",
+    messagingSenderId: "788996561408"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
   <script type="text/javascript">
-	var services = angular.module("services", []);
-    services.service("metaService", function() {
-    	this.setOpenGraphMetaTags = function(data) {
-			var head = $('head');
-    		for(var key in data) {
-				var value = data[key];
-    			head.append('<meta property="og:'+key+'" content="'+value+'" />');
-    		}
-    	};
-    });
-    var app = angular.module("App", ["ngMaterial", "services"]);
-    app.controller("AppCtrl", ["$scope", "metaService", function($scope, metaService) {
+    var app = angular.module("App", ["ngMaterial", "firebase"]);
+    app.controller("AppCtrl", ["$scope", "$firebaseObject", "$firebaseArray", function($scope, $firebaseObject, $firebaseArray) {
 		$scope.data = {};
-    	$scope.send = function() {
-    		console.log($scope.data);
-    	};
-		metaService.setOpenGraphMetaTags({
-			title: "Pledge to act!",
-			type: "article",
-			url: "http://websites.doopr.com/pledge/",
-			image: "http://websites.doopr.com/pledge/pledge-icon.jpg",
-			description: "A website that let's you pledge to take an action in the framework for action of community building.",
-			locale: "en_US",
-			site_name: "Pledge Site"
-		});
+         	$scope.send = function() {
+list.$add($scope.data).then(function(ref) {
+  var id = ref.key;
+  console.log("added record with id " + id);
+  list.$indexFor(id); // returns location in the array
+});
+    	        	console.log($scope.data);
+    	        };
+
+var ref = firebase.database().ref();
+
+     var obj = $firebaseObject(ref);
+
+     // to take an action after the data loads, use the $loaded() promise
+     obj.$loaded().then(function() {
+        console.log("loaded record:", obj.$id, obj.someOtherKeyInData);
+
+       // To iterate the key/value pairs of the object, use angular.forEach()
+       angular.forEach(obj, function(value, key) {
+          console.log(key, value);
+       });
+     });
+
+     // To make the data available in the DOM, assign it to $scope
+     $scope.firebase = obj;
+
+     // For three-way data bindings, bind it to the scope instead
+     //obj.$bindTo($scope, "data");
+
+    var formsRef = ref.child("forms");
+
+var list = $firebaseArray(formsRef);
+
     }]);
 	app.config(function($mdThemingProvider) {
 		var color = 'blue';
@@ -101,6 +136,7 @@
 		    .accentPalette(color);
 	});
   </script>
+
 </body>
 
 </html>

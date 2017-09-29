@@ -1,0 +1,103 @@
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Share!</title>
+    <style type="text/css">
+        .social-sharing-widgets {
+            text-align: left;
+        }
+        
+        .social-sharing-text {
+            color: #757575;
+            line-height: 48px;
+            vertical-align: top;
+        }
+        
+        .social-sharing-widgets button {
+            background-color: inherit;
+            border: 0;
+            height: 48px;
+            line-height: normal;
+            outline: none;
+            padding: 0;
+            width: 48px;
+        }
+        
+        .social-sharing-widgets button span {
+            display: inline-block;
+        }
+        
+        .social-icon {
+            height: 32px;
+            width: 32px;
+        }
+        
+        .facebook-icon {
+            background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAkFBMVEU7V506V507V547V53///88WJ39/f5BW55FXZ93hLGmrMcAMJIHQ5f7+/05Vp01U5wkS5nq6/E9WZ/v8PTU1+Ta3OfCx9kvUZsqTpoQRZcAOpUANJP+/v709Pfj5u/Q0+CgqMYAJ5JKYaEAP5YALZKOmr9OZ6cAAIjDyt6wudSstdGEjrdxfq5dcqxic6gAD45JMab1AAAAA3RSTlP2bWzfaPMlAAABCklEQVQ4y9WQyXKDMBBEx2GEyKIVsRhsMAbb2fP/f5cx5OASsu7pC6j6VU91wwMkEZENNgZYABY0GGn5gZDLbSJlshABgMtxW0lV6zsAr6vTa5ebrlTXEFj7Xw5n7ZUMALY6d4ipEAJNEOBNienufoJV5xxTFK7vXSkDAB9PKe7wfZimoQ21yNoDBeDj9phlWRB4floATo81wLNjswCaEvgKYO3QXOYT35d2GpoVUJWF6zukkkXvXOEvyZjeI4n8RYVmPmBQCDrwt+TbC088IMdbHZrMA+oiN2Y+Q1+Tf4zcr1lr9TO3+GwrrRXzW1DIzVBkRwFqEJv6WuA/ASwOMAAbAyzABmIAbH4B8RAa33MEkNQAAAAASUVORK5CYII=);
+        }
+        
+        .google-plus-icon {
+            background: no-repeat url(data:image/png;base64,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);
+        }
+        
+        .twitter-icon {
+            background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAY1BMVEVeqd1eqd1eqd1eqd1eqd1eqd1eqd3///9dqd1bp9xYptz6/P6RwuhkrN+v0+6cyOqVxel2tOLg7vnF3/NoruBhqt7y+P3q8vvY6ffN4/WHvuaCu+V8t+Tj8Pm72fGq0e5useBZ53dHAAAABnRSTlPh41LTxGTXSInyAAAAyElEQVQ4y83S6wqDIBgGYGtNP8/aaZ3r/q9yNmGIrvoz2F6CoPfpE1R0x2dBOcLnuV2B7Aqg3wCABISfgbkHKI0BSEn92ygl6slCBOigarbPUZyQtqo0jQDTpLKMsbEle7hJgCGkVCPVHlRbssTUuf/mvuQvIBiOJwhOgoyQgOER9FziGEBjAtHTCMQjJkgByOXdL5+3uhGz77s6BSA3qzvf965PQSNKX5eiwQenafW6GgtweB+AusB/3Mkvg+xKFCi/OXSUrMifIywb0NwYdlgAAAAASUVORK5CYII=);
+        }
+        
+        .linkedin-icon {
+            background: no-repeat url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAA6ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgICAgICAgICAgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iPgogICAgICAgICA8eG1wOk1vZGlmeURhdGU+MjAxNy0wNS0wOVQxMTowNToxODwveG1wOk1vZGlmeURhdGU+CiAgICAgICAgIDx4bXA6Q3JlYXRvclRvb2w+UGl4ZWxtYXRvciAzLjY8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4KICAgICAgICAgPHRpZmY6Q29tcHJlc3Npb24+NTwvdGlmZjpDb21wcmVzc2lvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPHRpZmY6WVJlc29sdXRpb24+NzI8L3RpZmY6WVJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOlhSZXNvbHV0aW9uPjcyPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MzI8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjE8L2V4aWY6Q29sb3JTcGFjZT4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjMyPC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Ckzzh0sAAAG/SURBVFgJY2QoWC/AwM7WwMDAkA/E9AOMjAsZfvwsYBkQy0He/P8/noGDnYGRoXzrf/p5G9MmJkwh+oqwoFuXYCzDMMFXi4Gfg4Xh448/DAWbrzEsOPsEXRnV+Cgh4KAkzDA/VA9sOcgGkCNAfJA4rQCaA4Sw2uOghF0cq2ISBVEcgEuvgiAnLimKxVEccODeO6wGLjj7FKs4NQTRHPCWIXH1JXDiAxkOSoQg/oF7b6lhF1YzBrwcwMiGWJ1JpCAorSgIcsFVf/jxm+HCs09wPjYGhgP+d3hhqGOs2AYXQ5d3nHWS4cLzTwwTfDQZ4oFlCDoARWPDntsME47cR5cC8zEcgFUVHkFQFt0QZwwvO9CVgsqSfqDjDCR5GRKA6QkdoCRCdEli+PUuqjgtR9YPCh1sBRrFDkC2hBC7wEYBQwnFUQAzsREYz7ByRICThaEBGDL6knwwaTCNLQSo4gCQ5aCEhgw+fP/DsD/NHFkIa1RRJQpgPkexjUgOVRyAzS5iS0+qOODB+2/Y3ECUGJUc8J0oy7ApoooDsBlMrNioA0ZDYMBDYMBbRAMeAkwMoF7qQAGg3UygLvKAOALaPQcAYMxxZdnPEo8AAAAASUVORK5CYII=);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="social-sharing-widgets">
+            <span class="social-sharing-text">Share this:</span>
+            <button class="social-widget" data-network="facebook">
+        <span class="social-icon facebook-icon"></span>
+        </button>
+            <button class="social-widget" data-network="twitter">
+        <span class="social-icon twitter-icon"></span>
+        </button>
+            <button class="social-widget" data-network="google-plus">
+        <span class="social-icon google-plus-icon"></span>
+        </button>
+            <button class="social-widget" data-network="linkedin">
+        <span class="social-icon linkedin-icon"></span>
+        </button>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME" rel="nofollow" target="_blank">
+                <img src="https://download.linkedin.com/desktop/add2profile/buttons/en_US.png " alt="LinkedIn Add to Profile button">
+            </a>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            const link = encodeURIComponent('https://www.nytimes.com/');
+
+            const urlMap = {
+                'facebook': 'https://www.facebook.com/sharer/sharer.php?u=',
+                'twitter': 'https://twitter.com/intent/tweet?url=',
+                'google-plus': 'https://plus.google.com/share?url=',
+                'linkedin': 'https://www.linkedin.com/shareArticle?mini=true&url='
+            };
+
+            $('button').on('click', function(event) {
+                const network = $(event.target).closest('.social-widget').data('network');
+                const url = urlMap[network] + link;
+                log(url);
+                window.open(url, 'share', 'menubar=no,toolbar=no,scrollbars=yes,resizable=yes,height=450,width=400');
+            });
+        });
+
+        function log(message) {
+            $('body').append('<div style="border:1px solid black">' + message + '</div>');
+        }
+    </script>
+</body>
+
+</html>
